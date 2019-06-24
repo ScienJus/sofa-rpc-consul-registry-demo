@@ -58,6 +58,36 @@ private HelloService helloService;
 
 ![consul service alias](images/consul-service-alias.jpg)
 
+此时也可以通过 consul dns 进行服务发现：
+
+```
+$ dig @127.0.0.1 -p 8600 consul-demo-hello-service.service.consul
+
+; <<>> DiG 9.10.6 <<>> @127.0.0.1 -p 8600 consul-demo-hello-service.service.consul
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 62838
+;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 2
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+;; QUESTION SECTION:
+;consul-demo-hello-service.service.consul. IN A
+
+;; ANSWER SECTION:
+consul-demo-hello-service.service.consul. 0 IN A 172.21.136.103
+
+;; ADDITIONAL SECTION:
+consul-demo-hello-service.service.consul. 0 IN TXT "consul-network-segment="
+
+;; Query time: 0 msec
+;; SERVER: 127.0.0.1#8600(127.0.0.1)
+;; WHEN: Mon Jun 24 22:55:58 CST 2019
+;; MSG SIZE  rcvd: 121
+```
+
 ## Step 5，使用自定义健康检查
 
 consul 作为注册中心的一个非常强大的特性就是，它支持 agent 主动发起健康检查，例如 http/tcp 调用，而不仅仅依赖于应用的 ttl 上报。
