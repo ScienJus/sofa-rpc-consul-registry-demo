@@ -8,11 +8,15 @@ import org.springframework.stereotype.Service;
 
 @Service
 @SofaService(
-        bindings = @SofaServiceBinding(
-                bindingType = "bolt",
-                parameters = @SofaParameter(key = ConsulConstants.CONSUL_SERVICE_NAME_KEY, value = "${spring.application.name}-hello-service")
-        )
-)
+        bindings = {
+                @SofaServiceBinding(
+                        bindingType = "bolt",
+                        parameters = @SofaParameter(key = ConsulConstants.CONSUL_SERVICE_NAME_KEY, value = "${spring.application.name}-hello-service")
+                ),
+                @SofaServiceBinding(
+                        bindingType = "rest",
+                        parameters = @SofaParameter(key = ConsulConstants.CONSUL_SERVICE_NAME_KEY, value = "${spring.application.name}-hello-service")
+                )})
 public class HelloServiceImpl implements HelloService {
     @Override
     public String say(String string) {

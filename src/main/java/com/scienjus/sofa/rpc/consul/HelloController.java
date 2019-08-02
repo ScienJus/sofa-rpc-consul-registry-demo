@@ -13,7 +13,7 @@ public class HelloController {
 
     @SofaReference(
             binding = @SofaReferenceBinding(
-                    bindingType = "bolt",
+                    bindingType = "rest",
                     parameters = @SofaParameter(key = ConsulConstants.CONSUL_SERVICE_NAME_KEY, value = "${spring.application.name}-hello-service")
             ),
             jvmFirst = false

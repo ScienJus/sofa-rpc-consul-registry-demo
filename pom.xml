@@ -56,6 +56,12 @@
       <artifactId>consul-api</artifactId>
       <version>1.4.2</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.jboss.resteasy</groupId>
+      <artifactId>resteasy-jaxrs</artifactId>
+      <version>3.6.3.Final</version>
+    </dependency>
   </dependencies>
 
   <build>
