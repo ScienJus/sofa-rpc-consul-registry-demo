@@ -108,3 +108,7 @@ com:
 修改后重启应用，查看 consul ui，等待 consul agent 进行第一次健康检查之后，查看健康检查信息，可以发现 output 一栏中显示着 health check 的结果。
 
 ![consul service alias](images/consul-service-http-health-check.jpg)
+
+## Step 6，使用 Rest
+
+在 `rest` 分支中含有 Rest 协议的 Demo，感兴趣可以自行查看。
